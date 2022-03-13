@@ -4,18 +4,20 @@
     <div class="question-text">
       <p>{{data.title}}</p>
     </div>
-    <div class="question-options">
-      <ul>
-        <li @click="selectOption(data.answers[0])">{{data.answers[0].title}}</li>
-        <li @click="selectOption(data.answers[1])">{{data.answers[1].title}}</li>
-      </ul>
+    <div class="question-additional">
+      <slot></slot>
     </div>
   </div>
 </template>
 
 <script>
+import Option from '@/components/option.vue';
+
 export default {
   props: ['data', 'author'],
+  components: {
+    Option
+  },
   created() {
     console.log(this.data, this.author);
   },

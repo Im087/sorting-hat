@@ -1,7 +1,11 @@
 <template>
-  <div>
-    <div>title</div>
-    <Chat></Chat>
+  <div class="home-container d-flex flex-column h-100">
+    <header class="py-5">
+      <h1 class="text-center">Sorting Hat</h1>
+    </header>
+    <section class="flex-fill">
+      <Chat></Chat>
+    </section>
   </div>
 </template>
 
@@ -15,6 +19,16 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.home-container {
+  
+  header {
+    background-color: $themeColor;
+
+    h1 {
+      color: #FFFFFF;
+    }
+  }
+}
 
 </style>
