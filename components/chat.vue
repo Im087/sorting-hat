@@ -13,6 +13,7 @@ import questionData from '@/assets/json/sorting_hat.json';
 import Question from '@/components/question.vue';
 import Answer from '@/components/answer.vue';
 import Option from '@/components/option.vue';
+import Input from '@/components/input.vue';
 
 export default {
   data() {
@@ -25,12 +26,16 @@ export default {
     Question,
     Answer,
     Option,
+    Input
   },
   mounted() {
-    this.appendQuestion(this.questionData[this.questionIndex]);
+    this.appendQuestion({
+      title: 'What is your name?',
+      placeholder: 'Name'
+    }, 'input');
   },
   methods: {
-    appendQuestion(question) {
+    appendQuestion(question, type) {
       // create a subclass of the base Vue constructor
       let questionClass = Vue.extend(Question);
       // create an instance of question component
@@ -43,9 +48,14 @@ export default {
       // append the component manually to the target element
       this.$refs['chat-box'].appendChild(questionComp.$el);
 
-      this.questionIndex++;
-      // append options to the question
-      this.appendOption(questionComp.$el, question.answers);
+      if(type == 'mcq') {
+        this.questionIndex++;
+        // append options to the question
+        this.appendOption(question.answers, questionComp.$el);
+      } else if (type == 'input') {
+        // append input to the question
+        this.appendInput(question.placeholder, questionComp.$el);
+      }
     },
     appendAnswer(answer) {
       // create a subclass of the base Vue constructor
@@ -60,23 +70,37 @@ export default {
       // append the component manually to the target element
       this.$refs['chat-box'].appendChild(answerComp.$el);
     },
-    appendOption(comp, answers) {
+    appendOption(answers, comp) {
       // create a subclass of the base Vue constructor
       let optionClass = Vue.extend(Option);
       // create an instance of question component
       let optionComp = new optionClass({
         propsData: {
           data: answers,
+          author: 'chatbot'
         }
         }).$on('showAnswer', this.showAnswer).$mount();
       // append the component manually to the target element
       comp.appendChild(optionComp.$el);
     },
+    appendInput(placeholder, comp) {
+      // create a subclass of the base Vue constructor
+      let inputClass = Vue.extend(Input);
+      // create an instance of question component
+      let inputComp = new inputClass({
+        propsData: {
+          data: placeholder,
+          author: 'chatbot'
+        }
+        }).$on('showAnswer', this.showAnswer).$mount();
+      // append the component manually to the target element
+      comp.appendChild(inputComp.$el);
+    },
     showAnswer(answer) {
       this.appendAnswer(answer);
       if(this.questionIndex < this.questionData.length) {
         // if there are more questions, append the next question
-        this.appendQuestion(this.questionData[this.questionIndex]);
+        this.appendQuestion(this.questionData[this.questionIndex], 'mcq');
       } else {
         // if there is no more question, calculate the final scores and get the house
         this.$nuxt.$store.dispatch('answers/setScores');

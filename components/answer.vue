@@ -2,7 +2,7 @@
   <div class="answer-container">
     Im a answer
     <div class="answer-text">
-      <p>{{data.title}}</p>
+      <p>{{data}}</p>
     </div>
   </div>
 </template>

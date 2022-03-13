@@ -32,6 +32,9 @@ export const actions = {
   addSelectedOption({commit}, obj) {
     commit('ADD_SELECTED_OPTION', obj);
   },
+  setUserName({commit}, str) {
+    commit('SET_USER_NAME', str);
+  },
   setScores({commit}) {
     commit('SET_SCORES');
   },
@@ -43,6 +46,9 @@ export const actions = {
 export const mutations = {
   ADD_SELECTED_OPTION(state, obj) {
     state._answers.selectedOptions.push(obj);
+  },
+  SET_USER_NAME(state, str) {
+    state._answers.userName = str;
   },
   SET_SCORES(state) {
     state._answers.selectedOptions.forEach(el => {

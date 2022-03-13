@@ -1,6 +1,6 @@
 <template>
   <div class="option-container d-flex justify-content-between flex-wrap">
-    <button class="option-button" v-for="(option, index) in data" :key="index" @click="selectOption(option)">
+    <button class="option-button" v-for="(option, index) in data" :key="index" @click="selectOption(option.title)">
       {{option.title}}
     </button>
   </div>
@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  props: ['data'],
+  props: ['data', 'author'],
   methods: {
     selectOption(option) {
       this.$emit('showAnswer', option);
