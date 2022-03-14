@@ -15,9 +15,10 @@ export default {
   },
   methods: {
     sendMessage(message) {
-      this.$emit('showAnswer', message);
-
+      // add the input message to vuex
       this.$nuxt.$store.dispatch('answers/setUserName', message);
+      // emit an event with the input message to the parent component
+      this.$emit('showAnswer', message);
     }
   }
 

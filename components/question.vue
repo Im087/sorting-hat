@@ -11,23 +11,9 @@
 </template>
 
 <script>
-import Option from '@/components/option.vue';
 
 export default {
   props: ['data', 'author'],
-  components: {
-    Option
-  },
-  created() {
-    console.log(this.data, this.author);
-  },
-  methods: {
-    selectOption(option) {
-      this.$emit('showAnswer', option);
-
-      this.$nuxt.$store.dispatch('answers/addSelectedOption', option);
-    }
-  }
 }
 </script>
 
