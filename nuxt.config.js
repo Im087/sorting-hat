@@ -40,11 +40,15 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/style-resources',
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
-    
+    '@nuxtjs/style-resources',
   ],
+
+  bootstrapVue: {
+    bootstrapCSS: false,
+    bootstrapVueCSS: false
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

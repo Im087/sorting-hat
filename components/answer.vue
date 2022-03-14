@@ -1,8 +1,7 @@
 <template>
-  <div class="answer-container">
-    Im a answer
-    <div class="answer-text">
-      <p>{{data.title || data}}</p>
+  <div class="answer-container align-self-end my-2">
+    <div class="answer-text py-1 px-2">
+      <span>{{data.title || data}}</span>
     </div>
   </div>
 </template>
@@ -19,6 +18,14 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.answer-container {
 
+  .answer-text {
+    background-color: $themeColor;
+    color: #FFFFFF;
+    border: $themeColor 2px solid;
+    border-radius: 0.5rem 0.5rem 0 0.5rem;
+  }
+}
 </style>

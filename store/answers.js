@@ -60,7 +60,6 @@ export const mutations = {
   SET_HOUSE(state) {
     let max = 0;
     for(let key in state._scores) {
-      console.log(max);
       if(state._scores[key] > max) {
         max = state._scores[key];
         state._house = key;

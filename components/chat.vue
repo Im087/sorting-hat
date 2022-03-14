@@ -1,6 +1,6 @@
 <template>
   <b-container class="chat-container h-100 w-100">
-    <div class="chat-box" ref="chat-box">
+    <div class="chat-box d-flex flex-column" ref="chat-box">
     </div>
   </b-container>
   
@@ -50,11 +50,11 @@ export default {
 
       if(type == 'mcq') {
         this.questionIndex++;
-        // append options to the question
-        this.appendOption(question.answers, questionComp.$el);
+        // append options after the question
+        this.appendOption(question.answers);
       } else if (type == 'input') {
-        // append input to the question
-        this.appendInput(question.placeholder, questionComp.$el);
+        // append input after the question
+        this.appendInput(question.placeholder);
       }
     },
     appendAnswer(answer) {
@@ -70,7 +70,7 @@ export default {
       // append the component manually to the target element
       this.$refs['chat-box'].appendChild(answerComp.$el);
     },
-    appendOption(answers, comp) {
+    appendOption(answers) {
       // create a subclass of the base Vue constructor
       let optionClass = Vue.extend(Option);
       // create an instance of question component
@@ -81,9 +81,9 @@ export default {
         }
         }).$on('showAnswer', this.showAnswer).$mount();
       // append the component manually to the target element
-      comp.appendChild(optionComp.$el);
+      this.$refs['chat-box'].appendChild(optionComp.$el);
     },
-    appendInput(placeholder, comp) {
+    appendInput(placeholder) {
       // create a subclass of the base Vue constructor
       let inputClass = Vue.extend(Input);
       // create an instance of question component
@@ -94,7 +94,7 @@ export default {
         }
         }).$on('showAnswer', this.showAnswer).$mount();
       // append the component manually to the target element
-      comp.appendChild(inputComp.$el);
+      this.$refs['chat-box'].appendChild(inputComp.$el);
     },
     showAnswer(answer) {
       this.appendAnswer(answer);
@@ -106,7 +106,7 @@ export default {
         this.$nuxt.$store.dispatch('answers/setScores');
         this.$nuxt.$store.dispatch('answers/setHouse');
         let house = this.$nuxt.$store.getters['answers/getHouse'];
-        console.log('house', house);
+        this.appendQuestion({title: `You are assigned to the house ${house}`});
       }
     }
   }
@@ -116,7 +116,7 @@ export default {
 
 <style lang="scss" scoped>
 .chat-container {
-  background-color: aquamarine;
+  background-color: $bgColor;
 }
 
 </style>

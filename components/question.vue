@@ -1,11 +1,7 @@
 <template>
-  <div class="question-container">
-    Im a question
-    <div class="question-text">
-      <p>{{data.title}}</p>
-    </div>
-    <div class="question-additional">
-      <slot></slot>
+  <div class="question-container align-self-start my-2">
+    <div class="question-text py-1 px-2">
+      <span>{{data.title}}</span>
     </div>
   </div>
 </template>
@@ -17,6 +13,15 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.question-container {
+
+  .question-text {
+    background-color: #FFFFFF;
+    color: $fontColor;
+    border: $themeColor 2px solid;
+    border-radius: 0.5rem 0.5rem 0.5rem 0;
+  }
+}
 
 </style>

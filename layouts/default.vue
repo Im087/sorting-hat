@@ -1,6 +1,6 @@
 <template>
   <div class="home-container d-flex flex-column h-100">
-    <header class="py-5">
+    <header class="py-5 position-sticky">
       <h1 class="text-center">Sorting Hat</h1>
     </header>
     <section class="flex-fill">
