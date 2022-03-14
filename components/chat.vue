@@ -31,7 +31,7 @@ export default {
   mounted() {
     this.appendQuestion({
       title: 'What is your name?',
-      placeholder: 'Name'
+      placeholder: 'Enter your name'
     }, 'input');
   },
   methods: {
@@ -105,8 +105,10 @@ export default {
         // if there is no more question, calculate the final scores and get the house
         this.$nuxt.$store.dispatch('answers/setScores');
         this.$nuxt.$store.dispatch('answers/setHouse');
+        let answers = this.$nuxt.$store.getters['answers/getAnswers'];
         let house = this.$nuxt.$store.getters['answers/getHouse'];
-        this.appendQuestion({title: `You are assigned to the house ${house}`});
+        // append the final message
+        this.appendQuestion({title: `Congratulations! ${answers.userName}, you are assigned to the house ${house}`});
       }
     }
   }

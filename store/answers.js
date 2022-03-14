@@ -65,5 +65,22 @@ export const mutations = {
         state._house = key;
       }
     }
+
+    switch (state._house) {
+      case 'g':
+        state._house = 'Gryffindor';
+        break;
+      case 'h':
+        state._house = 'Hufflepuff';
+        break;
+      case 'r':
+        state._house = 'Ravenclaw ';
+        break;
+      case 's':
+        state._house = 'Slytherin';
+        break;
+      default:
+        break;
+    }
   }
 };
