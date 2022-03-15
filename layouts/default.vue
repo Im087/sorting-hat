@@ -1,6 +1,6 @@
 <template>
   <div class="home-container d-flex flex-column h-100">
-    <header class="py-5 position-sticky">
+    <header class="py-5 position-sticky" id="header">
       <h1 class="text-center">Sorting Hat</h1>
     </header>
     <section class="flex-fill">
@@ -24,6 +24,7 @@ export default {
   
   header {
     background-color: $themeColor;
+    top: 0;
 
     h1 {
       color: #FFFFFF;

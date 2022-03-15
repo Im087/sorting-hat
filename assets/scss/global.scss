@@ -10,3 +10,29 @@ html, body, #__nuxt, #__layout {
   height: 100%;
   width: 100%;
 }
+
+.slide-left-enter-active {
+  transition: all 0.25s ease 0.5s;
+}
+
+.slide-left-leave-active {
+  transition: all 0.25s ease;
+}
+
+.slide-left-enter, .slide-left-leave-to {
+  transform: translateX(-10rem);
+  opacity: 0;
+}
+
+.slide-right-enter-active {
+  transition: all 0.25s ease 0.25s;
+}
+
+.slide-right-leave-active {
+  transition: all 0.25s ease;
+}
+
+.slide-right-enter, .slide-right-leave-to {
+  transform: translateX(10rem);
+  opacity: 0;
+}

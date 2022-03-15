@@ -1,9 +1,11 @@
 <template>
-  <div v-if="isShown" class="option-container d-flex justify-content-between flex-wrap w-100">
-    <b-button class="option-button flex-fill" v-for="(option, index) in data" :key="index" @click="selectOption(option)">
-      {{option.title}}
-    </b-button>
-  </div>
+  <transition name="slide-left">
+    <div v-if="isShown" class="option-container d-flex justify-content-between flex-wrap mx-5">
+      <b-button class="option-button flex-fill mr-1 mb-2" v-for="(option, index) in data" :key="index" @click="selectOption(option)">
+        {{option.title}}
+      </b-button>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -11,8 +13,12 @@ export default {
   props: ['data', 'author'],
   data() {
     return {
-      isShown: 1
+      isShown: 0
     }
+  },
+  mounted() {
+    // when mounted, show the component to activate css transitions
+    this.isShown = 1;
   },
   methods: {
     selectOption(option) {
@@ -39,13 +45,6 @@ export default {
     &:hover {
       border-color: $accentColor;
       color: $accentColor;
-      // background-color: $accentColor;
-      // border-color: $accentColor;
-      // color: #FFFFFF;
-    }
-
-    &:not(:last-child) {
-      margin-right: 0.25rem;
     }
   }
 }

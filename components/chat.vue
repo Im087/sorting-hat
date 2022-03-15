@@ -1,5 +1,5 @@
 <template>
-  <b-container class="chat-container h-100 w-100">
+  <b-container class="chat-container h-100 w-100 py-5">
     <div class="chat-box d-flex flex-column" ref="chat-box">
     </div>
   </b-container>
@@ -56,6 +56,15 @@ export default {
         // append input after the question
         this.appendInput(question.placeholder);
       }
+
+      console.log(document.documentElement.scrollTop, document.body.scrollHeight);
+
+      setTimeout(() => {
+        window.scrollTo({
+          top: document.body.scrollHeight - document.body.clientHeight,
+          behavior: 'smooth'
+        })
+      }, 10);
     },
     appendAnswer(answer) {
       // create a subclass of the base Vue constructor
@@ -69,11 +78,18 @@ export default {
         }).$mount();
       // append the component manually to the target element
       this.$refs['chat-box'].appendChild(answerComp.$el);
+
+      setTimeout(() => {
+        window.scrollTo({
+          top: document.body.scrollHeight - document.body.clientHeight,
+          behavior: 'smooth'
+        })
+      }, 10);
     },
     appendOption(answers) {
       // create a subclass of the base Vue constructor
       let optionClass = Vue.extend(Option);
-      // create an instance of question component
+      // create an instance of option component
       let optionComp = new optionClass({
         propsData: {
           data: answers,
@@ -86,7 +102,7 @@ export default {
     appendInput(placeholder) {
       // create a subclass of the base Vue constructor
       let inputClass = Vue.extend(Input);
-      // create an instance of question component
+      // create an instance of input component
       let inputComp = new inputClass({
         propsData: {
           data: placeholder,
