@@ -36,3 +36,15 @@ html, body, #__nuxt, #__layout {
   transform: translateX(10rem);
   opacity: 0;
 }
+
+.scrollIn {
+  opacity: 100%;
+  transform: scale(100%);
+  transition: all 0.5s ease;
+}
+
+.scrollOut {
+  opacity: 0;
+  transform: scale(50%);
+  transition: all 0.5s ease;
+}

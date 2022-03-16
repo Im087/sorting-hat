@@ -1,6 +1,6 @@
 <template>
   <transition name="slide-left">
-    <div v-if="isShown" class="input-container d-flex mb-2 mx-5">
+    <div v-if="isShown" class="input-container d-flex mb-2 mx-5" v-aos>
       <b-form-input class="input-field mr-1" type="text" :placeholder="data" required v-model="userName" @keyup.enter="sendMessage(userName)"></b-form-input>
       <b-button class="input-button" @click="sendMessage(userName)">Send</b-button>
     </div>

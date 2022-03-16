@@ -1,6 +1,6 @@
 <template>
   <transition name="slide-left">
-    <div v-if="isShown" class="question-container align-self-start d-flex my-2">
+    <div v-if="isShown" class="question-container align-self-start d-flex my-2" v-aos>
       <div class="question-author flex-shrink-0">?</div>
       <div class="question-text py-1 px-2 mr-5">
         <span>{{data.title}}</span>

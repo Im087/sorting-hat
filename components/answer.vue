@@ -1,6 +1,6 @@
 <template>
   <transition name="slide-right">
-    <div v-if="isShown" class="answer-container align-self-end d-flex my-2">
+    <div v-if="isShown" class="answer-container align-self-end d-flex my-2" v-aos>
       <div class="answer-text py-1 px-2 ml-5">
         <span>{{data.title || data}}</span>
       </div>

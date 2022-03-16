@@ -1,6 +1,6 @@
 <template>
   <transition name="slide-left">
-    <div v-if="isShown" class="option-container d-flex justify-content-between flex-wrap mx-5">
+    <div v-if="isShown" class="option-container d-flex justify-content-between flex-wrap mx-5" v-aos>
       <b-button class="option-button flex-fill mr-1 mb-2" v-for="(option, index) in data" :key="index" @click="selectOption(option)">
         {{option.title}}
       </b-button>

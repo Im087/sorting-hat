@@ -135,6 +135,10 @@ export default {
 <style lang="scss" scoped>
 .chat-container {
   background-color: $bgColor;
+
+  .chat-box {
+    overflow: hidden;
+  }
 }
 
 </style>
